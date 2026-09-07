@@ -13,6 +13,10 @@ defineOptions({
         ],
     },
 });
+
+defineProps<{
+    toys: any
+}>()
 </script>
 
 <template>
