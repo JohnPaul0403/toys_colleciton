@@ -12,6 +12,14 @@ class Toy extends Model
     use HasSlug;
     use InteractsWithMedia;
 
+    protected $fillable = [
+        'name',
+        'title',
+        'description',
+        'price',
+        'sold',
+    ];
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('images');
@@ -20,7 +28,14 @@ class Toy extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-        ->generateSlugsFrom('name')
-        ->saveSlugsTo('slug');
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
+
+    protected static function booted(): void
+    {
+        static::creating(function (Toy $toy) {
+            $toy->sold = false;
+        });
     }
 }

@@ -9,13 +9,15 @@
 
 @theme inline {
     --font-sans:
-        Instrument Sans, ui-sans-serif, system-ui, sans-serif,
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-        'Noto Color Emoji';
+        Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
     --radius-lg: var(--radius);
-    --radius-md: calc(var(--radius) - 2px);
-    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: var(--radius);
+    --radius-sm: var(--radius);
+    --radius-xs: var(--radius);
+    --radius-xl: var(--radius);
+    --radius-2xl: var(--radius);
 
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -79,87 +81,45 @@
     }
 }
 
-@layer utilities {
-    body,
-    html {
-        --font-sans:
-            'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
-            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-            'Noto Color Emoji';
-    }
-}
-
+/*
+  Monokai theme (single persistent dark mode).
+  Palette source: the classic Monokai VS Code / TextMate color scheme.
+*/
 :root {
-    --background: hsl(0 0% 100%);
-    --foreground: hsl(0 0% 3.9%);
-    --card: hsl(0 0% 100%);
-    --card-foreground: hsl(0 0% 3.9%);
-    --popover: hsl(0 0% 100%);
-    --popover-foreground: hsl(0 0% 3.9%);
-    --primary: hsl(0 0% 9%);
-    --primary-foreground: hsl(0 0% 98%);
-    --secondary: hsl(0 0% 92.1%);
-    --secondary-foreground: hsl(0 0% 9%);
-    --muted: hsl(0 0% 96.1%);
-    --muted-foreground: hsl(0 0% 45.1%);
-    --accent: hsl(0 0% 96.1%);
-    --accent-foreground: hsl(0 0% 9%);
-    --destructive: hsl(0 84.2% 60.2%);
-    --destructive-foreground: hsl(0 0% 98%);
-    --border: hsl(0 0% 92.8%);
-    --input: hsl(0 0% 89.8%);
-    --ring: hsl(0 0% 3.9%);
-    --chart-1: hsl(12 76% 61%);
-    --chart-2: hsl(173 58% 39%);
-    --chart-3: hsl(197 37% 24%);
-    --chart-4: hsl(43 74% 66%);
-    --chart-5: hsl(27 87% 67%);
-    --radius: 0.5rem;
-    --sidebar-background: hsl(0 0% 98%);
-    --sidebar-foreground: hsl(240 5.3% 26.1%);
-    --sidebar-primary: hsl(0 0% 10%);
-    --sidebar-primary-foreground: hsl(0 0% 98%);
-    --sidebar-accent: hsl(0 0% 94%);
-    --sidebar-accent-foreground: hsl(0 0% 30%);
-    --sidebar-border: hsl(0 0% 91%);
-    --sidebar-ring: hsl(217.2 91.2% 59.8%);
-    --sidebar: hsl(0 0% 98%);
-}
-
-.dark {
-    --background: hsl(0 0% 3.9%);
-    --foreground: hsl(0 0% 98%);
-    --card: hsl(0 0% 3.9%);
-    --card-foreground: hsl(0 0% 98%);
-    --popover: hsl(0 0% 3.9%);
-    --popover-foreground: hsl(0 0% 98%);
-    --primary: hsl(0 0% 98%);
-    --primary-foreground: hsl(0 0% 9%);
-    --secondary: hsl(0 0% 14.9%);
-    --secondary-foreground: hsl(0 0% 98%);
-    --muted: hsl(0 0% 16.08%);
-    --muted-foreground: hsl(0 0% 63.9%);
-    --accent: hsl(0 0% 14.9%);
-    --accent-foreground: hsl(0 0% 98%);
-    --destructive: hsl(0 84% 60%);
-    --destructive-foreground: hsl(0 0% 98%);
-    --border: hsl(0 0% 14.9%);
-    --input: hsl(0 0% 14.9%);
-    --ring: hsl(0 0% 83.1%);
-    --chart-1: hsl(220 70% 50%);
-    --chart-2: hsl(160 60% 45%);
-    --chart-3: hsl(30 80% 55%);
-    --chart-4: hsl(280 65% 60%);
-    --chart-5: hsl(340 75% 55%);
-    --sidebar-background: hsl(0 0% 7%);
-    --sidebar-foreground: hsl(0 0% 95.9%);
-    --sidebar-primary: hsl(360, 100%, 100%);
-    --sidebar-primary-foreground: hsl(0 0% 100%);
-    --sidebar-accent: hsl(0 0% 15.9%);
-    --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-    --sidebar-border: hsl(0 0% 15.9%);
-    --sidebar-ring: hsl(217.2 91.2% 59.8%);
-    --sidebar: hsl(240 5.9% 10%);
+    --background: #272822;
+    --foreground: #f8f8f2;
+    --card: #1e1f1c;
+    --card-foreground: #f8f8f2;
+    --popover: #1e1f1c;
+    --popover-foreground: #f8f8f2;
+    --primary: #e6db74;
+    --primary-foreground: #272822;
+    --secondary: #49483e;
+    --secondary-foreground: #f8f8f2;
+    --muted: #3e3d32;
+    --muted-foreground: #75715e;
+    --accent: #49483e;
+    --accent-foreground: #f8f8f2;
+    --destructive: #f92672;
+    --destructive-foreground: #f8f8f2;
+    --border: #49483e;
+    --input: #49483e;
+    --ring: #66d9ef;
+    --chart-1: #f92672;
+    --chart-2: #a6e22e;
+    --chart-3: #fd971f;
+    --chart-4: #e6db74;
+    --chart-5: #66d9ef;
+    --radius: 0px;
+    --sidebar-background: #171814;
+    --sidebar-foreground: #f8f8f2;
+    --sidebar-primary: #ae81ff;
+    --sidebar-primary-foreground: #272822;
+    --sidebar-accent: #3e3d32;
+    --sidebar-accent-foreground: #f8f8f2;
+    --sidebar-border: #49483e;
+    --sidebar-ring: #66d9ef;
+    --sidebar: #171814;
 }
 
 @layer base {
@@ -168,5 +128,146 @@
     }
     body {
         @apply bg-background text-foreground;
+        font-family:
+            Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji',
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     }
+}
+
+/*
+  Retro HTML component overrides.
+  Unlayered so they beat Tailwind's layered utility classes.
+*/
+[data-slot='card'] {
+    border: 2px solid;
+    border-color: #49483e #171814 #171814 #49483e;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+[data-slot='button'] {
+    border: 2px solid;
+    border-color: #75715e #171814 #171814 #75715e;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+[data-slot='button']:active:not(:disabled) {
+    border-color: #171814 #75715e #75715e #171814;
+}
+
+[data-slot='input'],
+[data-slot='textarea'],
+[data-slot='select-trigger'] {
+    border: 2px solid;
+    border-color: #171814 #75715e #75715e #171814;
+    border-radius: 0;
+    background-color: #1e1f1c;
+}
+
+[data-slot='input']:focus-visible,
+[data-slot='textarea']:focus-visible,
+[data-slot='select-trigger']:focus-visible {
+    border-color: #75715e #171814 #171814 #75715e;
+}
+
+[data-slot='separator'] {
+    border-style: dashed;
+}
+
+/* Toy form description editor: keep the editable area clickable and sized.
+   Tailwind's preflight strips heading sizes, list bullets, and blockquote
+   styling, so the Tiptap content needs explicit typography to render. */
+.tiptap.ProseMirror {
+    min-height: 18rem;
+    outline: none;
+}
+
+.tiptap.ProseMirror p {
+    margin: 0.25rem 0;
+}
+
+.tiptap.ProseMirror h1,
+.tiptap.ProseMirror h2,
+.tiptap.ProseMirror h3 {
+    font-weight: 700;
+    line-height: 1.25;
+    color: #e6db74;
+}
+
+.tiptap.ProseMirror h1 {
+    font-size: 1.5rem;
+}
+
+.tiptap.ProseMirror h2 {
+    font-size: 1.25rem;
+}
+
+.tiptap.ProseMirror h3 {
+    font-size: 1.125rem;
+}
+
+.tiptap.ProseMirror ul,
+.tiptap.ProseMirror ol {
+    margin: 0.25rem 0;
+    padding-left: 1.5rem;
+}
+
+.tiptap.ProseMirror ul {
+    list-style: disc;
+}
+
+.tiptap.ProseMirror ol {
+    list-style: decimal;
+}
+
+.tiptap.ProseMirror blockquote {
+    margin: 0.25rem 0;
+    border-left: 3px solid #75715e;
+    padding-left: 1rem;
+}
+
+.tiptap.ProseMirror code {
+    background-color: #171814;
+    padding: 0.125rem 0.25rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.tiptap.ProseMirror pre {
+    margin: 0.25rem 0;
+    background-color: #171814;
+    border: 2px solid;
+    border-color: #171814 #75715e #75715e #171814;
+    padding: 0.5rem;
+    overflow-x: auto;
+}
+
+.tiptap.ProseMirror pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.tiptap.ProseMirror hr {
+    border-top: 2px dashed #75715e;
+    margin: 1rem 0;
+}
+
+::selection {
+    background-color: #ae81ff;
+    color: #272822;
+}
+
+/* Retro links: blue underlined, Monokai cyan/purple variants */
+a:not([data-slot]) {
+    color: #66d9ef;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+a:not([data-slot]):visited {
+    color: #ae81ff;
+}
+
+a:not([data-slot]):hover {
+    color: #e6db74;
 }

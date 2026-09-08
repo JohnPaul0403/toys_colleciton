@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Toy;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ToysController extends Controller
@@ -23,6 +22,4 @@ class ToysController extends Controller
             'toyProps' => $toy,
         ]);
     }
-
-
 }
