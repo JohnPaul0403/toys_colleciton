@@ -4,7 +4,8 @@ import PublicLayout from '@/layouts/PublicLayout.vue'
 import { Toy } from '@/types'
 
 defineProps<{
-    toys: Toy[]
+    toys: Toy[];
+    images: string[];
 }>()
 </script>
 

@@ -16,7 +16,7 @@ import { dashboard, login } from '@/routes'
 
                 <div class="flex items-center gap-6">
                     <Link
-                        href="/"
+                        href="/toys"
                         class="text-sm transition-opacity hover:opacity-70"
                     >
                         Toys

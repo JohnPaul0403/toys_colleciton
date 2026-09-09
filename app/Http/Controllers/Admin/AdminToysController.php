@@ -15,9 +15,13 @@ class AdminToysController extends Controller
     public function index()
     {
         $toys = Toy::all();
+        $images = $toys->map(
+            fn (Toy $toy) => $toy->getFirstMediaUrl()
+        );
 
         return Inertia::render('Dashboard', [
-            'toysProps' => $toys,
+            'toys' => $toys,
+            'images' => $images,
         ]);
     }
 
@@ -39,9 +43,18 @@ class AdminToysController extends Controller
             'name' => 'string|required|max:255',
             'description' => 'string|required',
             'price' => 'decimal:0.00|required',
+            'images' => 'nullable|array',
+            'images.*' => 'image|max:10240',
         ]);
 
+        $images = $validated['images'] ?? [];
+        unset($validated['image']);
+
         $toy = Toy::create($validated);
+
+        foreach ($images as $image) {
+            $toy->addMedia($image)->toMediaCollection('images');
+        }
 
         Inertia::flash('toast', ['type' => 'success', 'message' => __('Toy post created!')]);
 
@@ -55,8 +68,13 @@ class AdminToysController extends Controller
      */
     public function show(Toy $toy)
     {
+        $images = $toy->getMedia('images')->map(
+            fn ($media) => $media->getUrl()
+        );
+
         return Inertia::render('toys/admin/show', [
             'toy' => $toy,
+            'images' => $images,
         ]);
     }
 
@@ -65,8 +83,13 @@ class AdminToysController extends Controller
      */
     public function edit(Toy $toy)
     {
+        $images = $toy->getMedia('images')->map(
+            fn ($media) => $media->getUrl()
+        );
+
         return Inertia::render('toys/admin/edit', [
             'toy' => $toy,
+            'images' => $images,
         ]);
     }
 

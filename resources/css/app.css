@@ -252,6 +252,12 @@
     margin: 1rem 0;
 }
 
+.tiptap.ProseMirror img {
+    max-width: 100%;
+    height: auto;
+    margin: 0.5rem 0;
+}
+
 ::selection {
     background-color: #ae81ff;
     color: #272822;

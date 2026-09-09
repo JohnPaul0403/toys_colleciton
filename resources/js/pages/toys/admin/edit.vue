@@ -5,6 +5,7 @@ import type { Toy } from '@/types';
 
 defineProps<{
     toy: Toy;
+    images: string[];
 }>();
 </script>
 

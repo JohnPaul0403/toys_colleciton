@@ -8,6 +8,7 @@ import {
     Heading2,
     Heading3,
     Italic,
+    Image as ImageIcon,
     List,
     ListOrdered,
     Minus,
@@ -17,6 +18,7 @@ import {
     Undo2,
 } from '@lucide/vue';
 import { EditorContent, useEditor } from '@tiptap/vue-3';
+import Image from '@tiptap/extension-image';
 import StarterKit from '@tiptap/starter-kit';
 import { computed, onUnmounted, ref, type Component } from 'vue';
 import Admin from '@/actions/App/Http/Controllers/Admin';
@@ -30,6 +32,7 @@ import type { Toy } from '@/types';
 
 type Props = {
     toy?: Toy;
+    images?: File[];
     mode?: 'create' | 'edit';
 };
 
@@ -44,12 +47,16 @@ const form = useForm({
     description: props.toy?.description ?? '',
     sold: props.toy?.sold ?? false,
     price: props.toy?.price ?? 0,
+    images: props.images ?? [],
 });
 
 const editorRef = ref(0);
 
 const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+        StarterKit,
+        Image.configure({ allowBase64: true, inline: false }),
+    ],
     content: form.description,
     onUpdate: ({ editor }) => {
         form.description = editor.getHTML();
@@ -183,6 +190,16 @@ const toolbar: ToolbarButton[][] = [
             title: 'Horizontal rule',
             run: () => editor.value?.chain().focus().setHorizontalRule().run(),
         },
+        {
+            icon: ImageIcon,
+            title: 'Image',
+            run: () => {
+                const src = window.prompt('Paste the image URL');
+                if (src) {
+                    editor.value?.chain().focus().setImage({ src }).run();
+                }
+            },
+        },
     ],
 ];
 
@@ -190,12 +207,16 @@ const { AdminToysController } = Admin;
 
 const submit = () => {
     if (props.mode === 'edit' && props.toy) {
-        form.put(AdminToysController.update.url(props.toy.id));
+        form.put(AdminToysController.update.url(props.toy.id), {
+            forceFormData: true,
+        });
 
         return;
     }
 
-    form.post(AdminToysController.store.url());
+    form.post(AdminToysController.store.url(), {
+        forceFormData: true,
+    });
 };
 </script>
 
@@ -213,7 +234,7 @@ const submit = () => {
                 class="flex h-full flex-grow flex-col gap-4"
                 novalidate
             >
-                <div class="grid gap-3 md:grid-cols-3">
+                <div class="grid gap-3 sm:grid-cols-1 md:grid-cols-3">
                     <div class="grid gap-1.5">
                         <Label for="title" class="text-xs">Title</Label>
                         <Input
@@ -247,6 +268,15 @@ const submit = () => {
                             placeholder="0.00"
                         />
                         <InputError :message="form.errors.price" />
+                    </div>
+                </div>
+                <div class="grid gap-3 md:grid-cols-2">
+                    <div class="grid gap-1.5">
+                        <Input
+                            type="file"
+                            multiple
+                            @change="form.images = Array.from($event.target.files ?? [])"
+                        />
                     </div>
                 </div>
 
