@@ -40,6 +40,7 @@ defineProps<{
         >
             <ToyCard
                 v-for="(toy, index) in toys"
+                :admin="true"
                 :key="toy.id"
                 :toy="toy"
                 :image="images[index]"

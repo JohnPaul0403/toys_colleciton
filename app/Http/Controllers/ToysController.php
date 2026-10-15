@@ -11,11 +11,11 @@ class ToysController extends Controller
     {
         $toys = Toy::all();
         $images = $toys->map(
-            fn (Toy $toy) => $toy->getFirstMediaUrl()
+            fn (Toy $toy) => $toy->getFirstMediaUrl('images')
         );
 
         return Inertia::render('toys/index', [
-            'toysProps' => $toys,
+            'toys' => $toys,
             'images' => $images,
         ]);
     }
@@ -27,7 +27,7 @@ class ToysController extends Controller
         );
 
         return Inertia::render('toys/show', [
-            'toyProps' => $toy,
+            'toy' => $toy,
             'images' => $images,
         ]);
     }

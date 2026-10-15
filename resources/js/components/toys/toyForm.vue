@@ -231,7 +231,7 @@ const submit = () => {
         <CardContent class="flex flex-1 flex-col">
             <form
                 @submit.prevent="submit"
-                class="flex h-full flex-grow flex-col gap-4"
+                class="flex h-full grow flex-col gap-4"
                 novalidate
             >
                 <div class="grid gap-3 sm:grid-cols-1 md:grid-cols-3">
@@ -280,10 +280,10 @@ const submit = () => {
                     </div>
                 </div>
 
-                <div class="flex min-h-0 flex-grow flex-col gap-1.5">
+                <div class="flex min-h-0 grow flex-col gap-1.5">
                     <Label class="text-xs">Description</Label>
                     <div
-                        class="flex flex-grow flex-col border-2 bg-[#1e1f1c]"
+                        class="flex grow flex-col border-2 bg-[#1e1f1c]"
                         style="border-color: #171814 #75715e #75715e #171814"
                     >
                         <div
@@ -324,7 +324,7 @@ const submit = () => {
                         </div>
 
                         <div
-                            class="text-foreground flex-grow overflow-y-auto px-3 py-2 caret-[#e6db74]"
+                            class="text-foreground grow overflow-y-auto px-3 py-2 caret-[#e6db74]"
                         >
                             <EditorContent :editor="editor" />
                         </div>

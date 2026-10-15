@@ -10,3 +10,6 @@ Tailwind preflight strips heading sizes/weights, list bullets, and blockquote st
 
 ## Toy form description editor (tiptap + image)
 Description editor is a plain @tiptap/vue-3 EditorContent with StarterKit + @tiptap/extension-image (allowBase64: true). Images are inserted by URL via the toolbar button (window.prompt -> setImage). There is no file-upload endpoint yet. Block-level styling relies on .tiptap.ProseMirror rules in resources/css/app.css because Tailwind preflight strips heading/list/blockquote styles.
+
+## Toy detail image rail via shadcn Carousel
+The toy image rail on the details page uses shadcn-vue Carousel (resources/js/components/ui/carousel) with Monokai overrides defined in resources/css/app.css: .toy-image-frame (beveled 4/3 image frame) and .toy-carousel-nav (prev/next arrows). Keep the monokai beveled-border/color styling in app.css, not inline; the single-image case renders without carousel controls.

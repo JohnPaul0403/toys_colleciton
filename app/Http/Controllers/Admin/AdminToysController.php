@@ -16,7 +16,7 @@ class AdminToysController extends Controller
     {
         $toys = Toy::all();
         $images = $toys->map(
-            fn (Toy $toy) => $toy->getFirstMediaUrl()
+            fn (Toy $toy) => $toy->getFirstMediaUrl('images')
         );
 
         return Inertia::render('Dashboard', [
@@ -104,11 +104,13 @@ class AdminToysController extends Controller
             'description' => 'string|required',
             'price' => 'decimal:0.00|required',
             'sold' => 'boolean|required',
+            'images' => 'nullable|array',
+            'images.*' => 'image|max:10240',
         ]);
 
         $toy->update($validated);
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => __('Toy post updated!')]);
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Toy post updated!']);
 
         return redirect()->route('admintoys.show', [
             'toy' => $toy,

@@ -2,12 +2,14 @@
 import { Link } from '@inertiajs/vue3';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
 import { Card, CardContent } from '@/components/ui/card';
-import { show } from '@/routes/admintoys';
+import { show as adminShow } from '@/routes/admintoys';
+import { toy as toyRoute } from '@/routes';
 import type { Toy } from '@/types';
 
 type Props = {
     toy: Toy;
     image?: string | null;
+    admin: boolean;
 };
 
 withDefaults(defineProps<Props>(), {
@@ -25,7 +27,7 @@ const formatPrice = (value: number) =>
 <template>
     <Card class="overflow-hidden">
         <div
-            class="relative aspect-[4/3] overflow-hidden border-2 bg-[#171814]"
+            class="relative aspect-4/3 overflow-hidden border-2 bg-[#171814]"
             style="border-color: #171814 #75715e #75715e #171814"
         >
             <img
@@ -49,7 +51,7 @@ const formatPrice = (value: number) =>
                 <h3
                     class="min-w-0 flex-1 text-lg leading-tight font-bold text-[#e6db74]"
                 >
-                    {{ toy.title || toy.name }}
+                    {{ toy.name }}
                 </h3>
                 <span
                     class="shrink-0 border-2 px-2 py-0.5 text-sm font-bold text-[#272822]"
@@ -90,7 +92,14 @@ const formatPrice = (value: number) =>
                 >
                     AVAILABLE
                 </span>
-                <Link :href="show(toy.id).url" class="text-sm">
+                <Link
+                    v-if="admin"
+                    :href="adminShow(toy.id).url" class="text-sm">
+                    View &raquo;
+                </Link>
+                <Link
+                    v-else
+                    :href="toyRoute(toy.id).url" class="text-sm">
                     View &raquo;
                 </Link>
             </div>

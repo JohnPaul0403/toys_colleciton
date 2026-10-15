@@ -175,12 +175,39 @@
     border-style: dashed;
 }
 
+/* Toy detail image rail: retro beveled image frame. */
+.toy-image-frame {
+    border: 2px solid;
+    border-color: #171814 #75715e #75715e #171814;
+    background-color: #171814;
+}
+
+/* Toy detail image rail: Monokai prev/next arrows. */
+.toy-carousel-nav {
+    border: 2px solid;
+    border-color: #75715e #171814 #171814 #75715e;
+    border-radius: 0;
+    background-color: #1e1f1c;
+    color: #e6db74;
+    box-shadow: none;
+}
+
+.toy-carousel-nav:hover:not(:disabled) {
+    background-color: #3e3d32;
+    color: #e6db74;
+}
+
 /* Toy form description editor: keep the editable area clickable and sized.
    Tailwind's preflight strips heading sizes, list bullets, and blockquote
    styling, so the Tiptap content needs explicit typography to render. */
 .tiptap.ProseMirror {
     min-height: 18rem;
     outline: none;
+}
+
+/* Read-only description rendering on the toy details page. */
+.tiptap.ProseMirror.toy-details {
+    min-height: 0;
 }
 
 .tiptap.ProseMirror p {
